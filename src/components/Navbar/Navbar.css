@@ -18,3 +18,7 @@
 .logo {
   width: 7em;
 }
+
+.current {
+  color: blueviolet !important;
+}
