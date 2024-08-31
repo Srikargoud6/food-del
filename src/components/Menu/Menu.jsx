@@ -21,7 +21,7 @@ const Menu = ({ category, setCategory }) => {
               <img
                 src={item.menu_image}
                 alt="menu"
-                className={category === item.menu_name ? "active" : ""}
+                className={category === item.menu_name ? "activeMenu" : ""}
               />
               <h5>{item.menu_name}</h5>
             </div>
