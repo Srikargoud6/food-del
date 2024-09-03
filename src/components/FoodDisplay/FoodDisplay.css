@@ -1,6 +1,8 @@
 .food-display {
   width: 90%;
   margin-top: 2rem;
+  min-height: 100vh;
+  margin-bottom: 1rem;
 }
 
 .price {
