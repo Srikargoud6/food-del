@@ -4,7 +4,7 @@ import { StoreContext } from "../../context/StoreContext";
 import FoodItem from "../FoodItem/FoodItem";
 import "bootstrap/dist/css/bootstrap.css";
 
-const FoodDisplay = () => {
+const FoodDisplay = ({ category }) => {
   const { food_list } = useContext(StoreContext);
   return (
     <div className="food-display">
@@ -12,17 +12,19 @@ const FoodDisplay = () => {
       <section className="container-fluid">
         <div className="row justify-content-start">
           {food_list.map((item, index) => {
-            return (
-              <FoodItem
-                key={index}
-                id={item._id}
-                name={item.name}
-                price={item.price}
-                description={item.description}
-                image={item.image}
-                className="col-4"
-              />
-            );
+            if (category === "all" || category === item.category) {
+              return (
+                <FoodItem
+                  key={index}
+                  id={item._id}
+                  name={item.name}
+                  price={item.price}
+                  description={item.description}
+                  image={item.image}
+                  className="col-4"
+                />
+              );
+            }
           })}
         </div>
       </section>
