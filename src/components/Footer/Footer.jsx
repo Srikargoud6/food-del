@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className="footer container-fluid">
       <div className="row">
-        <section className="col-6 p-3">
+        <section className="col-xs-12 col-md-6 p-3">
           <div>
             <img src={assets.logo} alt="logo" />
           </div>
@@ -31,7 +31,7 @@ const Footer = () => {
             </div>
           </div>
         </section>
-        <section className="col-3 d-flex flex-column align-items-start p-3">
+        <section className="col-xs-12 col-md-6 col-lg-3 d-flex flex-column align-items-start p-3">
           <h2>COMPANY</h2>
           <div>
             <ul className="list-unstyled">
@@ -42,7 +42,7 @@ const Footer = () => {
             </ul>
           </div>
         </section>
-        <section className="col-3 d-flex flex-column align-items-start p-3">
+        <section className="col-xs-12 col-md-6 col-lg-3 d-flex flex-column align-items-start p-3">
           <h2>GET IN TOUCH</h2>
           <div>
             <ul className="list-unstyled">
