@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 const Footer = () => {
   return (
-    <div className="footer container-fluid">
+    <div className="footer container-fluid" id="contact-us">
       <div className="row">
         <section className="col-xs-12 col-md-6 p-3">
           <div>

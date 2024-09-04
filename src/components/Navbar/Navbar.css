@@ -22,3 +22,7 @@
 .current {
   color: blueviolet !important;
 }
+
+.nav-items {
+  text-decoration: none;
+}

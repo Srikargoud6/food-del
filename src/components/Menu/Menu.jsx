@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 const Menu = ({ category, setCategory }) => {
   return (
-    <div className="menu container">
+    <div className="menu container" id="explore-menu">
       <h1>Explore our menu</h1>
       <div className="d-flex justify-content-between row">
         {menu_list.map((item) => {
