@@ -4,7 +4,7 @@ import { assets } from "../../assets/frontend_assets/assets";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
   return (
     <nav class="navbar navbar-expand-lg bg-body-light navv ">
@@ -88,7 +88,12 @@ const Navbar = () => {
               <img src={assets.basket_icon} alt="cart" className="spacing" />
             </section>
             <section>
-              <button class="btn btn-outline-success">Sign in</button>
+              <button
+                class="btn btn-outline-success"
+                onClick={() => setShowLogin(true)}
+              >
+                Log in
+              </button>
             </section>
           </div>
         </div>
