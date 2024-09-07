@@ -85,7 +85,9 @@ const Navbar = ({ setShowLogin }) => {
               <img src={assets.search_icon} alt="search" />
             </section>
             <section>
-              <img src={assets.basket_icon} alt="cart" className="spacing" />
+              <Link to="/cart">
+                <img src={assets.basket_icon} alt="cart" className="spacing" />
+              </Link>
             </section>
             <section>
               <button
