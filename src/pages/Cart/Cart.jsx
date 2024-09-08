@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./Cart.css";
 import { StoreContext } from "../../context/StoreContext";
 import "bootstrap/dist/css/bootstrap.css";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { cartItems, food_list, removeFromCart } = useContext(StoreContext);
@@ -39,6 +40,48 @@ const Cart = () => {
           })}
         </tbody>
       </table>
+      <h3>Cart Total</h3>
+
+      <section className="container">
+        <div className="row">
+          <div className="d-flex col-xs-12 col-md-6 order-2 order-md-1">
+            <div className="col-6">
+              <p>Subtotal</p>
+              <p>Delivery fee</p>
+              <p>Total</p>
+              <Link to="/order">
+                <button className="proceed-button">PROCEED TO CHECKOUT</button>
+              </Link>
+            </div>
+            <div className="col-6">
+              <p>0</p>
+              <p>2</p>
+              <p>0</p>
+            </div>
+          </div>
+          <div className="col-xs-12 col-md-6 order-1 order-md-2">
+            <div className="d-flex flex-column">
+              <div>
+                <p>If you have a promo code, enter it here</p>
+              </div>
+              <div>
+                <div class="input-group mb-3 promo">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="enter promo code"
+                    aria-label="Recipient's username"
+                    aria-describedby="button-addon2"
+                  />
+                  <button class="btn btn-dark" type="button" id="button-addon2">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
