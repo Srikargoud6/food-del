@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { assets } from "../../assets/frontend_assets/assets";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
+import { RiShoppingBag3Fill } from "react-icons/ri";
+import { StoreContext } from "../../context/StoreContext";
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
+  const { cartTotal } = useContext(StoreContext);
   return (
     <nav class="navbar navbar-expand-lg bg-body-light navv ">
       <div class="container-fluid d-flex align-items-center">
@@ -86,7 +89,9 @@ const Navbar = ({ setShowLogin }) => {
             </section>
             <section>
               <Link to="/cart">
-                <img src={assets.basket_icon} alt="cart" className="spacing" />
+                <RiShoppingBag3Fill
+                  className={cartTotal() === 0 ? "cart-icon" : "cart-iconn"}
+                />
               </Link>
             </section>
             <section>

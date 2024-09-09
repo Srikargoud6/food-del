@@ -27,3 +27,19 @@
 .nav-items {
   text-decoration: none;
 }
+
+.cart-icon {
+  color: grey;
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+.cart-iconn {
+  color: tomato;
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+  height: 2rem;
+  width: 2rem;
+}

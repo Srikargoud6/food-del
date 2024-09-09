@@ -5,7 +5,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart } = useContext(StoreContext);
+  const { cartItems, food_list, removeFromCart, cartTotal } =
+    useContext(StoreContext);
 
   return (
     <div className="d-flex flex-column cart">
@@ -54,9 +55,9 @@ const Cart = () => {
               </Link>
             </div>
             <div className="col-6">
-              <p>0</p>
-              <p>2</p>
-              <p>0</p>
+              <p>${cartTotal()}</p>
+              <p>$2</p>
+              <p>${cartTotal() + 2}</p>
             </div>
           </div>
           <div className="col-xs-12 col-md-6 order-1 order-md-2">
