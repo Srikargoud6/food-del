@@ -10,45 +10,33 @@ const PlaceOrder = () => {
   return (
     <div className="place-order container">
       <div className="row justify-content-between">
-        <div className="col-xs-12 col-md-6">
+        <div className="col-xs-12 col-md-4 address">
           <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
+            <div class="row form-margin">
+              <div class="col-xs-12 col-md-6">
                 <input
                   type="text"
                   class="form-control"
-                  id="inputEmail4"
                   placeholder="First name"
                 />
               </div>
-              <div class="form-group col-md-6">
+              <div class="col-xs-12 col-md-6">
                 <input
                   type="text"
                   class="form-control"
-                  id="inputPassword4"
                   placeholder="Last name"
                 />
               </div>
             </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <input
-                  type="email"
-                  class="form-control"
-                  id="inputEmail4"
-                  placeholder="Email"
-                />
+            <div class="row form-margin">
+              <div class="col-xs-12 col-md-6">
+                <input type="email" class="form-control" placeholder="Email" />
               </div>
-              <div class="form-group col-md-6">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputPassword4"
-                  placeholder="Mobile"
-                />
+              <div class="col-xs-12 col-md-6">
+                <input type="text" class="form-control" placeholder="Mobile" />
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group form-margin">
               <input
                 type="text"
                 class="form-control"
@@ -56,7 +44,7 @@ const PlaceOrder = () => {
                 placeholder="1234 Main St"
               />
             </div>
-            <div class="form-group">
+            <div class="form-group form-margin">
               <input
                 type="text"
                 class="form-control"
@@ -64,41 +52,24 @@ const PlaceOrder = () => {
                 placeholder="Apartment, studio, or floor"
               />
             </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputCity"
-                  placeholder="City"
-                />
+            <div class="row form-margin">
+              <div class="col-xs-12 col-md-6">
+                <input type="text" class="form-control" placeholder="City" />
               </div>
-              <div class="form-group col-md-4">
-                <label for="inputState">State</label>
-                <select id="inputState" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="form-group col-md-2">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputZip"
-                  placeholder="Zipcode"
-                />
+              <div class="col-xs-12 col-md-6">
+                <input type="text" class="form-control" placeholder="Zipcode" />
               </div>
             </div>
           </form>
         </div>
-        <div className="col-xs-12 col-md-6">
+        <div className="col-xs-12 col-md-4">
           <div className="d-flex col-xs-12 col-md-6 order-2 order-md-1">
             <div className="col-6">
               <p>Subtotal</p>
               <p>Delivery fee</p>
               <p>Total</p>
               <Link to="/order">
-                <button className="proceed-button">PROCEED TO CHECKOUT</button>
+                <button className="proceed-button">PROCEED TO PAYMENT</button>
               </Link>
             </div>
             <div className="col-6">
