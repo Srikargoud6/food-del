@@ -43,3 +43,34 @@
   height: 2rem;
   width: 2rem;
 }
+
+.profile {
+  position: relative;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  width: 8rem;
+}
+
+.profile-dropdown img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.profile-dropdown li {
+  cursor: pointer;
+}
+
+.profile:hover .profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  background-color: aliceblue;
+  border: 1px solid tomato;
+  padding: 1rem;
+  border-radius: 0.2rem;
+}

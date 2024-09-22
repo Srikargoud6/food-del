@@ -2,13 +2,21 @@ import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { assets } from "../../assets/frontend_assets/assets";
 import "bootstrap/dist/css/bootstrap.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { StoreContext } from "../../context/StoreContext";
 
 const Navbar = ({ setShowLogin }) => {
+  const navigate = useNavigate();
   const [menu, setMenu] = useState("home");
-  const { cartTotal } = useContext(StoreContext);
+  const { cartTotal, token, setToken } = useContext(StoreContext);
+
+  const logout = () => {
+    localStorage.removeItem("");
+    setToken("");
+    navigate("/");
+  };
+
   return (
     <nav class="navbar navbar-expand-lg bg-body-light navv ">
       <div class="container-fluid d-flex align-items-center">
@@ -95,12 +103,32 @@ const Navbar = ({ setShowLogin }) => {
               </Link>
             </section>
             <section>
-              <button
-                class="btn btn-outline-success"
-                onClick={() => setShowLogin(true)}
-              >
-                Log in
-              </button>
+              {!token ? (
+                <button
+                  class="btn btn-outline-success"
+                  onClick={() => setShowLogin(true)}
+                >
+                  Log in
+                </button>
+              ) : (
+                <div className="profile">
+                  <img src={assets.profile_icon} alt="profile" srcset="" />
+                  <ul className="profile-dropdown">
+                    <li className="d-flex justify-content-center gap-1">
+                      <img src={assets.bag_icon} alt="bag" srcset="" />
+                      <p>Orders</p>
+                    </li>
+                    <hr />
+                    <li
+                      className="d-flex justify-content-center gap-1"
+                      onClick={logout}
+                    >
+                      <img src={assets.logout_icon} alt="logout" srcset="" />
+                      <p>Log out</p>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </section>
           </div>
         </div>
