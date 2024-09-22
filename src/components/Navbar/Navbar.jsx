@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Link, useNavigate } from "react-router-dom";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { StoreContext } from "../../context/StoreContext";
+// import { toast } from "react-toastify";
 
 const Navbar = ({ setShowLogin }) => {
   const navigate = useNavigate();
@@ -15,6 +16,12 @@ const Navbar = ({ setShowLogin }) => {
     localStorage.removeItem("");
     setToken("");
     navigate("/");
+  };
+
+  const showAlert = () => {
+    if (cartTotal() === 0) {
+      window.alert("Cart is empty :(");
+    }
   };
 
   return (
@@ -96,11 +103,13 @@ const Navbar = ({ setShowLogin }) => {
               <img src={assets.search_icon} alt="search" />
             </section>
             <section>
-              <Link to="/cart">
-                <RiShoppingBag3Fill
-                  className={cartTotal() === 0 ? "cart-icon" : "cart-iconn"}
-                />
-              </Link>
+              {cartTotal() === 0 ? (
+                <RiShoppingBag3Fill className="cart-icon" onClick={showAlert} />
+              ) : (
+                <Link to="/cart">
+                  <RiShoppingBag3Fill className="cart-iconn" />
+                </Link>
+              )}
             </section>
             <section>
               {!token ? (
