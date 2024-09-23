@@ -4,11 +4,16 @@ import { assets } from "../../assets/frontend_assets/assets";
 import { StoreContext } from "../../context/StoreContext";
 
 const FoodItem = ({ id, name, price, description, image }) => {
-  const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
+  const { cartItems, addToCart, removeFromCart, url } =
+    useContext(StoreContext);
 
   return (
     <div class="card food-card" style={{ width: "18rem" }}>
-      <img class="card-img-top food-img" src={image} alt="Card image cap" />
+      <img
+        class="card-img-top food-img"
+        src={url + "/images/" + image}
+        alt="Card image cap"
+      />
 
       <div class="card-body">
         <section className="d-flex justify-content-between align-items-center">
