@@ -1,23 +1,70 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./PlaceOrder.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
+import axios from "axios";
 
 const PlaceOrder = () => {
-  const { cartTotal } = useContext(StoreContext);
+  const { cartTotal, token, food_list, cartItems, url } =
+    useContext(StoreContext);
+  const [data, setData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    street: "",
+    city: "",
+    zipcode: "",
+    phone: "",
+  });
+
+  const onChaneHandler = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const placeOrder = async (event) => {
+    event.preventDefault();
+    let orderItems = [];
+    food_list.map((item) => {
+      if (cartItems[item._id] > 0) {
+        let itemInfo = item;
+        itemInfo["quantity"] = cartItems[item._id];
+        orderItems.push(itemInfo);
+      }
+    });
+    let orderData = {
+      address: data,
+      items: orderItems,
+      amount: cartTotal() + 2,
+    };
+    let response = await axios.post(url + "/api/order/place", orderData, {
+      headers: { token },
+    });
+    if (response.data.success) {
+      const { session_url } = response.data;
+      window.location.replace(session_url);
+    } else {
+      alert("Error");
+    }
+  };
 
   return (
     <div className="place-order container">
       <div className="row justify-content-between">
         <div className="col-xs-12 col-md-4 address">
-          <form>
+          <form onSubmit={placeOrder}>
             <div class="row form-margin">
               <div class="col-xs-12 col-md-6">
                 <input
                   type="text"
                   class="form-control"
                   placeholder="First name"
+                  name="firstName"
+                  value={data.firstName}
+                  onChange={onChaneHandler}
+                  required
                 />
               </div>
               <div class="col-xs-12 col-md-6">
@@ -25,15 +72,35 @@ const PlaceOrder = () => {
                   type="text"
                   class="form-control"
                   placeholder="Last name"
+                  name="lastName"
+                  value={data.lastName}
+                  onChange={onChaneHandler}
+                  required
                 />
               </div>
             </div>
             <div class="row form-margin">
               <div class="col-xs-12 col-md-6">
-                <input type="email" class="form-control" placeholder="Email" />
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Email"
+                  name="email"
+                  value={data.email}
+                  onChange={onChaneHandler}
+                  required
+                />
               </div>
               <div class="col-xs-12 col-md-6">
-                <input type="text" class="form-control" placeholder="Mobile" />
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Phone"
+                  name="phone"
+                  value={data.phone}
+                  onChange={onChaneHandler}
+                  required
+                />
               </div>
             </div>
             <div class="form-group form-margin">
@@ -41,23 +108,35 @@ const PlaceOrder = () => {
                 type="text"
                 class="form-control"
                 id="inputAddress"
-                placeholder="1234 Main St"
-              />
-            </div>
-            <div class="form-group form-margin">
-              <input
-                type="text"
-                class="form-control"
-                id="inputAddress2"
-                placeholder="Apartment, studio, or floor"
+                placeholder="Street"
+                name="street"
+                value={data.street}
+                onChange={onChaneHandler}
+                required
               />
             </div>
             <div class="row form-margin">
               <div class="col-xs-12 col-md-6">
-                <input type="text" class="form-control" placeholder="City" />
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="City"
+                  name="city"
+                  value={data.city}
+                  onChange={onChaneHandler}
+                  required
+                />
               </div>
               <div class="col-xs-12 col-md-6">
-                <input type="text" class="form-control" placeholder="Zipcode" />
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Zipcode"
+                  name="zipcode"
+                  value={data.zipcode}
+                  onChange={onChaneHandler}
+                  required
+                />
               </div>
             </div>
           </form>
@@ -69,7 +148,9 @@ const PlaceOrder = () => {
               <p>Delivery fee</p>
               <p>Total</p>
               <Link to="/order">
-                <button className="proceed-button">PROCEED TO PAYMENT</button>
+                <button className="proceed-button" type="submit">
+                  PROCEED TO PAYMENT
+                </button>
               </Link>
             </div>
             <div className="col-6">
