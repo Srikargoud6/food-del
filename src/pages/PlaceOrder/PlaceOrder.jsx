@@ -28,26 +28,27 @@ const PlaceOrder = () => {
     event.preventDefault();
     let orderItems = [];
     food_list.map((item) => {
-      if (cartItems[item._id] > 0) {
+      if (cartItems[item._id]) {
         let itemInfo = item;
         itemInfo["quantity"] = cartItems[item._id];
         orderItems.push(itemInfo);
       }
     });
-    let orderData = {
-      address: data,
-      items: orderItems,
-      amount: cartTotal() + 2,
-    };
-    let response = await axios.post(url + "/api/order/place", orderData, {
-      headers: { token },
-    });
-    if (response.data.success) {
-      const { session_url } = response.data;
-      window.location.replace(session_url);
-    } else {
-      alert("Error");
-    }
+    console.log(orderItems);
+
+    // let orderData = {
+    //   address: data,
+    //   items: orderItems,
+    //   amount: cartTotal() + 2,
+    // };
+    // let response = await axios.post(url + "/api/order/place", orderData, {
+    //   headers: { token },
+    // });
+    // if (response.data.success) {
+    //   window.location.replace(`http://localhost:3000/order/success`);
+    // } else {
+    //   alert("Error");
+    // }
   };
 
   return (
@@ -147,11 +148,9 @@ const PlaceOrder = () => {
               <p>Subtotal</p>
               <p>Delivery fee</p>
               <p>Total</p>
-              <Link to="/order">
-                <button className="proceed-button" type="submit">
-                  PROCEED TO PAYMENT
-                </button>
-              </Link>
+              <button className="proceed-button" type="submit">
+                PROCEED TO PAYMENT
+              </button>
             </div>
             <div className="col-6">
               <p>${cartTotal()}</p>

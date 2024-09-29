@@ -32,7 +32,34 @@ const Navbar = ({ setShowLogin }) => {
             <img src={assets.logo} alt="logo" className="logo" />
           </a>
         </section>
-
+        <section className="d-block d-md-none">
+          {!token ? (
+            <button
+              class="btn btn-outline-success"
+              onClick={() => setShowLogin(true)}
+            >
+              Log in
+            </button>
+          ) : (
+            <div className="profile">
+              <img src={assets.profile_icon} alt="profile" srcset="" />
+              <ul className="profile-dropdown">
+                <li className="d-flex justify-content-center gap-1">
+                  <img src={assets.bag_icon} alt="bag" srcset="" />
+                  <p>Orders</p>
+                </li>
+                <hr />
+                <li
+                  className="d-flex justify-content-center gap-1"
+                  onClick={logout}
+                >
+                  <img src={assets.logout_icon} alt="logout" srcset="" />
+                  <p>Log out</p>
+                </li>
+              </ul>
+            </div>
+          )}
+        </section>
         <button
           class="navbar-toggler"
           type="button"
@@ -44,7 +71,6 @@ const Navbar = ({ setShowLogin }) => {
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <section></section>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 pages">
             <Link class="nav-items" to="/">
@@ -111,36 +137,36 @@ const Navbar = ({ setShowLogin }) => {
                 </Link>
               )}
             </section>
-            <section>
-              {!token ? (
-                <button
-                  class="btn btn-outline-success"
-                  onClick={() => setShowLogin(true)}
-                >
-                  Log in
-                </button>
-              ) : (
-                <div className="profile">
-                  <img src={assets.profile_icon} alt="profile" srcset="" />
-                  <ul className="profile-dropdown">
-                    <li className="d-flex justify-content-center gap-1">
-                      <img src={assets.bag_icon} alt="bag" srcset="" />
-                      <p>Orders</p>
-                    </li>
-                    <hr />
-                    <li
-                      className="d-flex justify-content-center gap-1"
-                      onClick={logout}
-                    >
-                      <img src={assets.logout_icon} alt="logout" srcset="" />
-                      <p>Log out</p>
-                    </li>
-                  </ul>
-                </div>
-              )}
-            </section>
           </div>
         </div>
+        <section className="d-md-block d-none">
+          {!token ? (
+            <button
+              class="btn btn-outline-success"
+              onClick={() => setShowLogin(true)}
+            >
+              Log in
+            </button>
+          ) : (
+            <div className="profile">
+              <img src={assets.profile_icon} alt="profile" srcset="" />
+              <ul className="profile-dropdown">
+                <li className="d-flex justify-content-center gap-1">
+                  <img src={assets.bag_icon} alt="bag" srcset="" />
+                  <p>Orders</p>
+                </li>
+                <hr />
+                <li
+                  className="d-flex justify-content-center gap-1"
+                  onClick={logout}
+                >
+                  <img src={assets.logout_icon} alt="logout" srcset="" />
+                  <p>Log out</p>
+                </li>
+              </ul>
+            </div>
+          )}
+        </section>
       </div>
     </nav>
   );
