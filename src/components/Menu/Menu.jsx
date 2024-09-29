@@ -2,12 +2,14 @@ import React from "react";
 import "./Menu.css";
 import { menu_list } from "../../assets/frontend_assets/assets";
 import "bootstrap/dist/css/bootstrap.css";
+import { FaAngleLeft } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa";
 
 const Menu = ({ category, setCategory }) => {
   return (
-    <div className="menu container" id="explore-menu">
+    <div className="menu" id="explore-menu">
       <h1>Explore our menu</h1>
-      <div className="d-flex justify-content-between row">
+      <div className="menu-list">
         {menu_list.map((item) => {
           return (
             <div
@@ -16,7 +18,7 @@ const Menu = ({ category, setCategory }) => {
                   prev === item.menu_name ? "all" : item.menu_name
                 )
               }
-              className="menu-item d-flex flex-column align-items-center col-xs-6 col-sm-3 col-md-4 col-lg-1"
+              className="menu-item d-flex flex-column align-items-center"
             >
               <img
                 src={item.menu_image}
