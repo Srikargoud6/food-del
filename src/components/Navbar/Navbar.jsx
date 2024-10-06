@@ -25,7 +25,7 @@ const Navbar = ({ setShowLogin }) => {
   };
 
   return (
-    <nav class="navbar navbar-expand-lg bg-body-light navv ">
+    <nav class="navbar navbar-expand-lg bg-body-light navv sticky-top">
       <div class="container-fluid d-flex align-items-center">
         <section>
           <a class="navbar-brand" href="/">
